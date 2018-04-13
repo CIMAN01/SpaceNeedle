@@ -1,0 +1,117 @@
+/**
+ * Building Java Programs Third Edition
+ *
+ * Chapter 2 Primitive Data and Definite Loops
+ *
+ * Write a program that produces the following figure (which vaguely resembles the Seattle Space Needle)
+ * as its output using nested for loops. Use a class constant to make it possible to change the size of
+ * the figure (the following output uses a size of 4).
+ *
+ * Solution by CIMAN 04/13/2018
+ *
+ **/
+
+// Create an ASCII version of the Space Needle
+public class SpaceNeedle {
+
+    // changing SIZE will change the width/height of the Space Needle.
+    final static int SIZE = 4;
+
+    public static void main(String[] args) {
+       // execute each method in order (from top to bottom)
+       needle();
+       upperDome();
+       middleDome();
+       bottomDome();
+       needle();
+       body();
+       base();
+    }
+
+    // Prints out the needle portion of the space needle
+    public static void needle() {
+
+        for (int i = 1; i <= SIZE; i++) {
+           // inner loop is needed for proper spacing of characters
+           for (int j = 1; j <= SIZE*3; j++) {
+               System.out.print(" ");
+           }
+           // prints out the needle structure
+           System.out.println("||");
+        }
+    }
+
+    // Prints out the upper half of the dome
+    public static void upperDome(){
+        for (int line = 1; line <= SIZE; line++) {
+            // inner loop controls the spacing of characters
+            for (int i = 1; i <= (SIZE-1)*(SIZE-line); i++) {
+                System.out.print(" ");
+            }
+            // prints out the first or left-most character set
+            System.out.print("__/");
+            // inner loop displaying the right amount of ":" on left side
+            for (int j = 1; j <= line-1; j++) {
+                System.out.print(":::");
+            }
+            // prints the middle of the structure
+            System.out.print("||");
+            // inner loop displaying the right amount of ":" on right side
+            for (int k = 1; k <= line-1; k++) {
+                System.out.print(":::");
+            }
+            // prints the last or right-most character set
+            System.out.println("\\__");
+        }
+    }
+
+    //Prints out the middle of the dome (horizontal 'ring')
+    public static void middleDome() {
+        // prints out first or left-most character
+        System.out.print("|");
+        // SIZE*6 or 24 \" needed
+        for (int i = 1; i <= SIZE*6; i++) {
+            System.out.print("\"");
+        }
+        // prints out last or right-most character
+        System.out.println("|");
+    }
+
+    // Prints out the bottom half of the dome
+    public static void bottomDome(){
+        for (int line = 1; line <= SIZE; line++) {
+            // inner loop in charge of proper spacing
+            for (int i = 1; i <= (line*2)-2; i++) {
+                System.out.print(" ");
+            }
+            // prints out first character set
+            System.out.print("\\_");
+            // inner loop displaying the right amount of /\ characters
+            for (int j = 1; j <= (((SIZE*2)+5) - (line*2)); j++) {
+                System.out.print("/\\");
+            }
+            // prints out last character set
+            System.out.println("_/");
+        }
+    }
+
+    // Prints out the body portion of the space needle
+    public static void body() {
+        // SIZE*SIZE same as 4x4 or 16
+        for (int line = 1; line <= SIZE * SIZE; line++) {
+            // inner loop gives proper spacing
+            for (int i = 1; i <= (SIZE*2)+1; i++) {
+                System.out.print(" ");
+            }
+            // prints the body structure
+            System.out.println("|%%||%%|");
+        }
+    }
+
+    // Prints out the base of the space needle
+    public static void base() {
+        // Reuse upperDome() & middleDome to form the base portion
+        upperDome(); // reuse upperDome()
+        middleDome(); // reuse middleDome()
+    }
+}
