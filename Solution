@@ -45,8 +45,8 @@ public class SpaceNeedle {
     public static void upperDome(){
         for (int line = 1; line <= SIZE; line++) {
             // inner loop controls the spacing of characters
-            for (int i = 1; i <= (SIZE-1)*(SIZE-line); i++) {
-                System.out.print(" ");
+            for (int i = 1; i <= SIZE-line; i++) {
+                System.out.print("   ");
             }
             // prints out the first or left-most character set
             System.out.print("__/");
@@ -87,7 +87,7 @@ public class SpaceNeedle {
             // prints out first character set
             System.out.print("\\_");
             // inner loop displaying the right amount of /\ characters
-            for (int j = 1; j <= (((SIZE*2)+5) - (line*2)); j++) {
+            for (int j = 1; j <= (((SIZE*3)+1) - (line*2)); j++) {
                 System.out.print("/\\");
             }
             // prints out last character set
@@ -100,7 +100,7 @@ public class SpaceNeedle {
         // SIZE*SIZE same as 4x4 or 16
         for (int line = 1; line <= SIZE * SIZE; line++) {
             // inner loop gives proper spacing
-            for (int i = 1; i <= (SIZE*2)+1; i++) {
+            for (int i = 1; i <= (SIZE*3)-3; i++) {
                 System.out.print(" ");
             }
             // prints the body structure
